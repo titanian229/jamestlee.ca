@@ -10,3 +10,4 @@ top of page navbar, tab style
 pages:
     portfolio
     contact me page
+    

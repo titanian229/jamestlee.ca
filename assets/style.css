@@ -1,0 +1,65 @@
+BODY {
+    animation: 2s ease-in 0s 1 transitionBG;
+    background-color: #000033;
+    /* background-color: #555; */
+}
+
+/* nav {
+    {transition: opacity ease-in 4s;}
+}
+
+div  */
+
+.fade-in {
+    animation: 2s ease-in 0s 1 textHideTransition, 2s ease-in 2s 1 textTransitionIn;
+    color: white;
+}
+
+.fade-in-2 {
+    animation: 2s ease-in 0s 1 textHideTransition, 4s ease-out 2s 1 textSecondIn;
+    color: white;
+}
+
+
+@keyframes textHideTransition {
+    0% {
+        color: #0000b3;
+    }
+    100% {
+        color: #000033;
+    }
+}
+@keyframes textTransitionIn {
+    0% {
+        color: #000033;
+    }
+    100% {
+        color: white;
+    }
+}
+
+@keyframes textSecondIn {
+    0% {
+        color: #000033;
+    }
+    50% {
+        color: #000033;
+    }
+    100% {
+        color: white;
+    }
+}
+
+
+
+
+@keyframes transitionBG {
+    0% {
+        background-color: #0000b3;
+    }
+    100% {
+        background-color: #000033;
+    }
+}
+
+
