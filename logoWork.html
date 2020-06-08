@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Logoplayground</title>
+        <script src="assets/velocity.min.js"></script>
+    </head>
+    <body>
+        <style type="text/css">
+            /* #field {
+                position: relative;
+                height: 1000px;
+                background-color: lightgreen;
+            }
+            #planet1 {
+                position: absolute;
+                left: 0;
+                bottom: 50%;
+                width: 1.5em;
+                height: 1.5em;
+                border-radius: 1.5em;
+                background: red;
+            }
+            #planet2 {
+                position: absolute;
+                left: 0;
+                bottom: 50%;
+                width: 1.7em;
+                height: 1.7em;
+                border-radius: 1.7em;
+                background: green;
+            } */
+        </style>
+        <div id="solar-system-logo">
+            <!-- <div id="planet1"></div>
+            <div id="planet2"></div> -->
+            <svg
+                id="logo"
+                version="1.1"
+                width="700"
+                height="500"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <!-- <ellipse
+                    cx="300"
+                    cy="250"
+                    rx="280"
+                    ry="140"
+                    stroke="black"
+                    fill="transparent"
+                    stroke-width="3"
+                /> -->
+                <!-- <ellipse
+                    cx="300"
+                    cy="250"
+                    rx="210"
+                    ry="105"
+                    stroke="black"
+                    fill="transparent"
+                    stroke-width="3"
+                />
+                <ellipse
+                    cx="300"
+                    cy="250"
+                    rx="140"
+                    ry="70"
+                    stroke="black"
+                    fill="transparent"
+                    stroke-width="3"
+                /> -->
+                <!-- <circle id="star" cx="300" cy="250" r="50" fill="yellow" /> -->
+                <!-- All circles have a center the same as that of above, in this case 300, 250 -->
+                <!-- <circle id="p1-1" cx="300" cy="250" r="50" fill="#00004d" /> -->
+
+                <!-- <circle cx="25" cy="75" r="20" fill="black" stroke-width="5" /> -->
+                <!-- x^2/140 + y^2/70 = 1 -->
+            </svg>
+        </div>
+
+        <script type="text/javascript">
+            // Original JavaScript code by Chirp Internet: www.chirp.com.au
+            // Please acknowledge use of this code by including this header.
+            //The plan
+            //Have the defined points be:
+            //Object, containing list of bodies in the solar system, their starting offset in degrees rad (theta), and their major axis;
+            //  The function itself would take the center point of all orbits (assumed shared) and the ratio of major to minor axis
+            // the animation itself is defined from the left hand and bottom corners of the animation area
+            // so my function will need to know the height of the area, the width is not required.
+
+            function pp(textHere) {
+                console.log(textHere);
+            }
+
+            //first painting the objects on
+
+            const systemX = 700;
+            const systemY = 600;
+
+            const solarCenterX = systemX / 2;
+            const solarCenterY = systemY / 2;
+
+            const ellipseRatio = 2.1; //ratio of x to y
+
+            const orbitsList = [130, 210, 290]; //semimajor axis list for ellipses
+
+            const logoSystem = document.querySelector("#logo");
+
+            orbitsList.forEach(function (semiMajorAxis) {
+                let newEllipse = `<ellipse
+                        cx="${solarCenterX}"
+                        cy="${solarCenterY}"
+                        rx="${semiMajorAxis}"
+                        ry="${semiMajorAxis / ellipseRatio}"
+                        stroke="#d9d9d9"
+                        fill="transparent"
+                        stroke-width="2"
+                    />`;
+                logoSystem.innerHTML += newEllipse;
+            });
+
+            //the star
+            logoSystem.innerHTML += `<circle id="star" cx="${solarCenterX}" cy="${solarCenterY}" r="45" fill="yellow" />`;
+
+            //adding the planets to array, each planet has phase angle, index of orbit it's on, radius of body itself from 0-10
+            let planets = [
+                {
+                    orbitIndex: 0,
+                    id: "planet01",
+                    phaseAngle: 0.5 * Math.PI,
+                    radius: 6,
+                },
+                {
+                    orbitIndex: 0,
+                    id: "planet02",
+                    phaseAngle: 1.3 * Math.PI,
+                    radius: 2,
+                },
+                {
+                    orbitIndex: 0,
+                    id: "planet03",
+                    phaseAngle: 1.8 * Math.PI,
+                    radius: 2,
+                },
+                { orbitIndex: 1, id: "planet11", phaseAngle: 0, radius: 4 },
+                {
+                    orbitIndex: 1,
+                    id: "planet12",
+                    phaseAngle: 0.7 * Math.PI,
+                    radius: 2,
+                },
+                {
+                    orbitIndex: 1,
+                    id: "planet13",
+                    phaseAngle: 1.4 * Math.PI,
+                    radius: 4,
+                },
+                {
+                    orbitIndex: 2,
+                    id: "planet21",
+                    phaseAngle: 0.2 * Math.PI,
+                    radius: 12,
+                    col: "green",
+                },
+                {
+                    orbitIndex: 2,
+                    id: "planet22",
+                    phaseAngle: 1.2 * Math.PI,
+                    radius: 12,
+                    col: "blue",
+                },
+                // {
+                //     orbitIndex: 2,
+                //     id: "planet22",
+                //     phaseAngle: 1.3 * Math.PI,
+                //     radius: 22,
+                // },
+                // {
+                //     orbitIndex: 2,
+                //     id: "planet23",
+                //     phaseAngle: 1.8 * Math.PI,
+                //     radius: 22,
+                // },
+            ];
+
+            function returnLocation(orbBody, t) {
+                let semiMajorAxis = orbitsList[orbBody.orbitIndex];
+                let semiMinorAxis =
+                    orbitsList[orbBody.orbitIndex] / ellipseRatio;
+                let theta = orbBody.phaseAngle;
+                // let mt = t / (1000 * (orbBody.orbitIndex + 1)) //slower for larger radii
+                let mt = t / (orbBody.orbitIndex + 1); //slower for larger radii
+                //the position must always fall such x = majorAxis/2 * cos(t + theta) and y = (majorAxis/ellipseRatio)/2 * sin(t + theta)
+                let x = semiMajorAxis * Math.cos(mt + theta) + solarCenterX;
+                let y = semiMinorAxis * Math.sin(mt + theta) + solarCenterY;
+                let r =
+                    orbBody.radius *
+                        (1 / 3) *
+                        (2 + Math.sin(2 * Math.PI + mt + theta)) +
+                    (7 * (2 * (orbBody.orbitIndex + 1))) / 3;
+                //TODO : Add function that changes the radius dependent on phase angle, from 0.6 to 1 from phase pi/2 to 3pi/2, creating perspective
+                let z = 1; //ranges so that objects fall behind the sun
+                return { x: x, y: y, r: r };
+            }
+
+            //rendering initial location as test
+            planets.forEach(function (orbBody) {
+                let coords = returnLocation(orbBody, 0);
+                let col = "col" in orbBody ? orbBody.col : "#00004d";
+                logoSystem.innerHTML += `<circle id="${orbBody.id}" cx="${coords.x}" cy="${coords.y}" r="${coords.r}" fill=${col} />`;
+            });
+
+            //This should be replaced by something called to animate the page, like the function requestAnimationFrame
+            let t = 0;
+            let timeInterval = 20;
+            let animInterval = 50 / 1000;
+            let animationProcess = setInterval(function () {
+                planets.forEach(function (orbBody) {
+                    let coords = returnLocation(orbBody, t);
+                    bodyElement = document.querySelector(`#${orbBody.id}`);
+                    bodyElement.setAttribute("cx", coords.x);
+                    bodyElement.setAttribute("cy", coords.y);
+                    bodyElement.setAttribute("r", coords.r);
+                });
+                t += animInterval;
+            }, timeInterval);
+        </script>
+    </body>
+</html>

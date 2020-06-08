@@ -1,108 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-1858846-3"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-1858846-3');
-    </script>
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-1858846-3"
+        ></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+            gtag("config", "UA-1858846-3");
+        </script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="James Lee personal bio webpage"/>
-    <meta name="keywords" content="James, Lee, James Lee, coding"/>
-    <meta name="author" content="JamesLee"/>
-    <meta name="copyright" content="2020"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="./assets/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cabin&family=Inconsolata:wght@400;500&family=Nunito&family=Nunito+Sans&family=Pacifico&family=Quicksand&family=Rubik&family=VT323&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Josefin+Sans:wght@400;500;700&family=Montserrat:ital@0;1&family=Orbitron:wght@400;500;600;700&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script> -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,500;1,600&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Fredericka+the+Great&family=Kaushan+Script&family=Monoton&family=Pacifico&family=Parisienne&display=swap" rel="stylesheet">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="James Lee's personal webpage" />
+        <meta name="keywords" content="James, Lee, James Lee, coding" />
+        <meta name="author" content="James Lee" />
+        <meta name="copyright" content="2020" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cabin&family=Inconsolata:wght@400;500&family=Nunito&family=Nunito+Sans&family=Pacifico&family=Quicksand&family=Rubik&family=VT323&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Josefin+Sans:wght@400;500;700&family=Montserrat:ital@0;1&family=Orbitron:wght@400;500;600;700&family=Roboto:wght@400;500;700;900&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,500;1,600&family=Roboto:wght@500;700;900&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Fredericka+the+Great&family=Kaushan+Script&family=Monoton&family=Pacifico&family=Parisienne&display=swap"
+            rel="stylesheet"
+        />
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script> -->
-    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script> -->
-    <meta property="og:title" content="James Lee" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://jamestlee.ca" />
-    <meta property="og:image" content="" />
+        <meta property="og:title" content="James Lee" />
+        <link rel="stylesheet" href="./assets/style.css" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://jamestlee.ca" />
+        <meta property="og:image" content="" />
 
-    <title>James Lee</title>
-</head>
-<body>
-    <!-- <nav>
-        <ul class="nav nav-tabs navbar-dark" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" id="portfolio-tab" data-toggle="tab" href="#portfolio" role="tab" aria-controls="portfolio" aria-selected="false">Portfolio</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
-            </li>
-            </ul>
-            <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
-            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="portfolio-tab">...</div>
-            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
-            </div>
-    </nav> -->
-    <div class="container">
-        <header>
-            <!-- My branding, resizeable to three levels with media queries.  Name, full logo, and three words/sentence, all the way down to just name and small logo -->
-            <!-- <img id="arc" src="assets/upperarc.svg"/>
-            <div>
-                <span id="identity">James Lee</span>
-            </div> -->
-            <div class="row">
-                <div class="col-3">
-                    <img id="james-icon" src="assets/icon.svg"/>
-                </div>
-                <div class="col-6">
-                    <div id="intro">
-                        <p id="main-header">I'm james<span class="highlight">,</span></p>
-                        <p id="intro-line">a full stack web developer<span>,</span> based in Toronto</p>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <img src="https://visualpharm.com/assets/319/Male%20User-595b40b65ba036ed117d3de6.svg"/> <!--temp placeholder-->
-                </div>
-            </div>
-        </header>
+        <title>James Lee</title>
+    </head>
+    <body>
         <nav>
-            <!-- small nav hamburger on right of page for mobile, with all content on same page scrolled down -->
-            <div class="nav-container">
-                I AM A NAVBAR
-    
-            </div>
-    
-    
+            <a href="">James Lee</a>
+            <a href="">About Me</a>
+            <a href="">Portfolio</a>
+            <a href="">Get in touch</a>
         </nav>
+        <div class="container">
+            <div class="header">
+                <h1>James Lee</h1>
+                <p>I'm a full stack developer,</p>
+                <p>based in Toronto</p>
+            </div>
+            <div id="about">
+                <p>Hi! I'm Jamie Lee, but I go by James.</p>
+                <p>
+                    I'm a tech professional, focused on back end development but
+                    growing my experience with front end as well. I’m proficient
+                    in Python (including the use of SciPy and NumPy), SQL,
+                    Javascript (ECMAScript 6), CSS & HTML, as well as the full
+                    MERN stack. I'm always learning, building my knowledge base
+                    taking courses in subjects ranging from Machine Learning and
+                    Data Science to RESTFUL API design. I'm skilled with the use
+                    of front end tools such as Bootstrap, jQuery, and Node.js;
+                    and up to date in the latest practices for deployment using
+                    Git and Heroku.
+                </p>
 
-    </div>
-    <div class="container main-container">
-        <div id="side">
-            <!-- my logo will end up here -->
-            logo, moves here when page scrolls
+                <p>
+                    I've always been passionate about opportunities for growth
+                    and adding to my skillset - I bring enthusiasm and drive to
+                    any space.
+                </p>
+            </div>
         </div>
-        <div id="main">
-            <p>main</p>main bio and whatnot
-        </div>
-
-    </div>
-    
-
-
-
-
-
-
-
-    <script src="./assets/script.js"></script>
-</body>
+        <script src="./assets/script.js"></script>
+    </body>
 </html>
